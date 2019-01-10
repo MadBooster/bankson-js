@@ -25,4 +25,16 @@ export default class InboundPayments {
     }
     return this.base.get(`/inboundpayments/batches/${batchId}`, opts);
   }
+
+  fetchV2(opts) {
+    return this.base.get('inbound-payments?' + Qs.stringify(opts));
+  }
+
+  refreshV2(certificateId) {
+    throw new Error('Not implemented');
+  }
+
+  batchV2(batchId, type = 'json') {
+    throw new Error('Not implemented');
+  }
 }

@@ -1,10 +1,10 @@
 import Applications from './ext/applications';
 import Webhooks from './ext/webhooks';
-import Certificates from './ext/certificates';
+import Certificates from './ext/bank-certificates';
 import Calls from './ext/calls';
 import BankAccounts from './ext/bank-accounts';
 import BankAccountStatements from './ext/bank-account-statements';
-import Payments from './ext/payments';
+import Payments from './ext/outbound-payments';
 import InboundPayments from './ext/inbound-payments';
 import ApiKeys from './ext/apikeys';
 
@@ -23,7 +23,7 @@ export default class Client {
     this.calls = new Calls(this);
     this.bankAccounts = new BankAccounts(this);
     this.bankAccountStatements = new BankAccountStatements(this);
-    this.payments = new Payments(this);
+    this.outboundPayments = new Payments(this);
     this.apikeys = new ApiKeys(this);
     this.inboundPayments = new InboundPayments(this);
     this.beforeRequest = opts.beforeRequest || (() => Promise.resolve());
@@ -42,6 +42,10 @@ export default class Client {
 
   me() {
     return this.get('/me');
+  }
+
+  meV2() {
+    return this.get('/v2/me')
   }
 
   authorizationHeader(bearerToken) {
@@ -73,11 +77,11 @@ export default class Client {
   }
 
   post(path, data) {
-    return request('POST', path, data);
+    return this.request('POST', path, data);
   }
 
   put(path, data) {
-    return request('PUT', path, data);
+    return this.request('PUT', path, data);
   }
 
   request(method, path, data) {
