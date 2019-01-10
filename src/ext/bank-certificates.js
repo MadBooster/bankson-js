@@ -1,6 +1,6 @@
-import FormData from 'form-data';
+const FormData = require('form-data');
 
-export default class Certificates {
+module.exports = class Certificates {
   constructor(base) {
     this.base = base;
   }

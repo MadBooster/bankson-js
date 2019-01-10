@@ -1,20 +1,20 @@
-import Applications from './ext/applications';
-import Webhooks from './ext/webhooks';
-import Certificates from './ext/bank-certificates';
-import Calls from './ext/calls';
-import BankAccounts from './ext/bank-accounts';
-import BankAccountStatements from './ext/bank-account-statements';
-import Payments from './ext/outbound-payments';
-import InboundPayments from './ext/inbound-payments';
-import ApiKeys from './ext/apikeys';
+const Applications = require('./ext/applications');
+const Webhooks = require('./ext/webhooks');
+const Certificates = require('./ext/bank-certificates');
+const Calls = require('./ext/calls');
+const BankAccounts = require('./ext/bank-accounts');
+const BankAccountStatements = require('./ext/bank-account-statements');
+const Payments = require('./ext/outbound-payments');
+const InboundPayments = require('./ext/inbound-payments');
+const ApiKeys = require('./ext/apikeys');
 
-import NodeRSA from 'node-rsa';
+const NodeRSA = require('node-rsa');
 
-import FormData from 'form-data';
-import fetch from 'node-fetch';
+const FormData = require('form-data');
+const fetch = require('node-fetch');
 const Headers = fetch.Headers || window.Headers; // We are in a browser
 
-export default class Client {
+module.exports = class Client {
 
   constructor(opts = {}) {
     this.applications = new Applications(this);

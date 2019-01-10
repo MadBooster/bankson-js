@@ -1,4 +1,4 @@
-export default class Calls {
+module.exports = class Calls {
   constructor(base) {
     this.base = base;
   }

@@ -1,4 +1,4 @@
-export default class BankAccounts {
+module.exports = class BankAccounts {
   constructor(base) {
     this.base = base;
   }

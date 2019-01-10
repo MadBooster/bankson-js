@@ -1,4 +1,4 @@
-export default class Applications {
+module.exports = class Applications {
   constructor(base) {
     this.base = base;
   }

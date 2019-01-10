@@ -1,4 +1,4 @@
-export default class Webhooks {
+module.exports = class Webhooks {
   constructor(base) {
     this.base = base;
   }

@@ -1,6 +1,6 @@
-import Qs from 'qs';
+const Qs = require('qs');
 
-export default class InboundPayments {
+module.exports = class InboundPayments {
   constructor(base) {
     this.base = base;
   }

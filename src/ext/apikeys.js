@@ -1,4 +1,4 @@
-export default class ApiKeys {
+module.exports = class ApiKeys {
   constructor(base) {
     this.base = base;
   }
