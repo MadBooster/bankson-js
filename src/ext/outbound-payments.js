@@ -1,3 +1,5 @@
+const Qs = require('qs');
+
 module.exports = class Payments {
   constructor(base) {
     this.base = base;
@@ -11,8 +13,8 @@ module.exports = class Payments {
     return this.base.post('/payments/feedback', {});
   }
 
-  fetchV2() {
-    return this.base.get('/v2/outbound-payments');
+  fetchV2(opts) {
+    return this.base.get('/v2/outbound-payments?' + Qs.stringify(opts));
   }
 
   addV2(data) {
