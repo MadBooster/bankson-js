@@ -6,26 +6,26 @@ module.exports = class Certificates {
   }
 
   fetch() {
-    return this.base.get('/bank-certificates');
+    return this.base.get('/certificates');
   }
 
   upload(file, params) {
     let data = new FormData();
     Object.keys(params).forEach(k => data.append(k, params[k]));
     data.append('certificate', file);
-    return this.base.post('/bank-certificates/upload', data);
+    return this.base.post('/certificates/upload', data);
   }
 
   request(data) {
-    return this.base.post('/bank-certificates/request', data);
+    return this.base.post('/certificates/request', data);
   }
 
   remove(id) {
-    return this.base.delete(`/bank-certificates/${id}`);
+    return this.base.delete(`/certificates/${id}`);
   }
 
   renew(id, data = {}) {
-    return this.base.post(`/bank-certificates/${id}/renew`, data);
+    return this.base.post(`/certificates/${id}/renew`, data);
   }
 
   fetchV2() {

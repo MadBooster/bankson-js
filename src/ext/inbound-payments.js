@@ -27,7 +27,7 @@ module.exports = class InboundPayments {
   }
 
   fetchV2(opts) {
-    return this.base.get('inbound-payments?' + Qs.stringify(opts));
+    return this.base.get('/v2/inbound-payments?' + Qs.stringify(opts));
   }
 
   refreshV2(certificateId) {
