@@ -18,4 +18,8 @@ module.exports = class BankAccounts {
   createV2(data) {
     return this.base.post('/v2/bank-accounts', data);
   }
+
+  updateV2(id, data) {
+    return this.base.put(`/v2/bank-accounts/${id}`, data)
+  }
 }
