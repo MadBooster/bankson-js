@@ -107,7 +107,12 @@ module.exports = class Client {
 
   handleResponse(resp, options = {}) {
     if (!resp.ok) {
-      if (resp.status >= 500 || resp.status < 400) throw new Error('Internal error');
+      if (resp.status >= 500 || resp.status < 400) {
+        let err = new Error(`Internal error (${resp.status}): ${resp.statusText}`);
+        err.status = resp.status;
+        err.statusText = resp.statusText;
+        throw err;
+      }
       return getBody(resp).then(json => {
         let err = new Error('Request unsuccessfull');
         err.status = resp.status;
