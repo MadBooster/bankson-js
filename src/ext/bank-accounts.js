@@ -11,8 +11,8 @@ module.exports = class BankAccounts {
     return this.base.post('/bankaccounts', data);
   }
 
-  fetchV2() {
-    return this.base.get('/v2/bank-accounts');
+  fetchV2(opts) {
+    return this.base.get('/v2/bank-accounts?' + Qs.stringify(opts));
   }
 
   createV2(data) {
