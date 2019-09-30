@@ -1,3 +1,5 @@
+const Qs = require('qs');
+
 module.exports = class BankAccounts {
   constructor(base) {
     this.base = base;
