@@ -21,6 +21,10 @@ module.exports = class Payments {
     return this.base.post('/v2/outbound-payments', data);
   }
 
+  removeV2(id) {
+    return this.base.delete(`/v2/outbound-payments/${id}`);
+  }
+
   fetchFeedbackV2() {
     throw new Error('Not implemented');
   }
