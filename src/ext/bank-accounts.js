@@ -1,24 +1,24 @@
-const Qs = require('qs');
+import Qs from 'qs'
 
-module.exports = class BankAccounts {
+export default class BankAccounts {
   constructor(base) {
-    this.base = base;
+    this.base = base
   }
 
   fetch() {
-    return this.base.get('/bankaccounts');
+    return this.base.get('/bankaccounts')
   }
 
   create(data) {
-    return this.base.post('/bankaccounts', data);
+    return this.base.post('/bankaccounts', data)
   }
 
   fetchV2(opts) {
-    return this.base.get('/v2/bank-accounts?' + Qs.stringify(opts));
+    return this.base.get('/v2/bank-accounts?' + Qs.stringify(opts))
   }
 
   createV2(data) {
-    return this.base.post('/v2/bank-accounts', data);
+    return this.base.post('/v2/bank-accounts', data)
   }
 
   updateV2(id, data) {

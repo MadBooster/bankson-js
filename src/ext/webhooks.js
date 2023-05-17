@@ -1,22 +1,22 @@
-module.exports = class Webhooks {
+export default class Webhooks {
   constructor(base) {
-    this.base = base;
+    this.base = base
   }
 
   fetch() {
-    return this.base.get('/webhooks');
+    return this.base.get('/webhooks')
   }
 
   create(data) {
-    return this.base.post('/webhooks', data);
+    return this.base.post('/webhooks', data)
   }
 
   fetchV2() {
-    return this.base.get('/v2/webhooks');
+    return this.base.get('/v2/webhooks')
   }
 
   createV2(data) {
-    return this.base.post('/v2/webhooks', data);
+    return this.base.post('/v2/webhooks', data)
   }
 
   updateV2(id, data) {

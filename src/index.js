@@ -1,4 +1,4 @@
-const Client = require('./client');
+import Client from './client.js'
 
 // Export for commonjs modules
-module.exports = Client;
+export default Client

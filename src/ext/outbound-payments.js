@@ -1,31 +1,31 @@
-const Qs = require('qs');
+import Qs from 'qs'
 
-module.exports = class Payments {
+export default class Payments {
   constructor(base) {
-    this.base = base;
+    this.base = base
   }
 
   fetch() {
-    return this.base.get('/payments');
+    return this.base.get('/payments')
   }
 
   fetchFeedback() {
-    return this.base.post('/payments/feedback', {});
+    return this.base.post('/payments/feedback', {})
   }
 
   fetchV2(opts) {
-    return this.base.get('/v2/outbound-payments?' + Qs.stringify(opts));
+    return this.base.get('/v2/outbound-payments?' + Qs.stringify(opts))
   }
 
   addV2(data) {
-    return this.base.post('/v2/outbound-payments', data);
+    return this.base.post('/v2/outbound-payments', data)
   }
 
   removeV2(id) {
-    return this.base.delete(`/v2/outbound-payments/${id}`);
+    return this.base.delete(`/v2/outbound-payments/${id}`)
   }
 
   fetchFeedbackV2() {
-    throw new Error('Not implemented');
+    throw new Error('Not implemented')
   }
 }
