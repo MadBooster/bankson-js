@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "form-data": "^1.0.0-rc4",
-    "node-fetch": "^1.7.3",
     "node-rsa": "^0.4.2",
     "qs": "^6.5.2"
   }

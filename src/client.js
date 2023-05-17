@@ -1,5 +1,4 @@
 import FormData from 'form-data'
-import fetch from 'node-fetch'
 import NodeRSA from 'node-rsa'
 
 import ApiKeys from './ext/apikeys.js'
@@ -11,8 +10,6 @@ import Calls from './ext/calls.js'
 import InboundPayments from './ext/inbound-payments.js'
 import Payments from './ext/outbound-payments.js'
 import Webhooks from './ext/webhooks.js'
-
-const Headers = fetch.Headers || window.Headers // We are in a browser
 
 export default class Client {
   constructor(opts = {}) {
