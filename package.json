@@ -4,6 +4,9 @@
   "description": "Bankson.fi Node client",
   "main": "src/index.js",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir lib",
@@ -32,8 +35,7 @@
     "eslint-plugin-unicorn": "^47.0.0"
   },
   "dependencies": {
-    "form-data": "^1.0.0-rc4",
-    "node-rsa": "^0.4.2",
+    "node-rsa": "^1.1.1",
     "qs": "^6.5.2"
   }
 }

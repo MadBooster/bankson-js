@@ -1,4 +1,3 @@
-import FormData from 'form-data'
 import NodeRSA from 'node-rsa'
 
 import ApiKeys from './ext/apikeys.js'
