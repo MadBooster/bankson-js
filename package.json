@@ -30,11 +30,12 @@
   "homepage": "https://github.com/banksonfi/bankson-js#readme",
   "devDependencies": {
     "eslint": "^8.40.0",
-    "eslint-config-madbooster-node-app": "^6.2.2",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unicorn": "^47.0.0"
+    "eslint-config-madbooster-node-app": "^9.0.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "eslint-plugin-unicorn": "^52.0.0"
   },
   "dependencies": {
+    "form-data": "^4.0.0",
     "node-rsa": "^1.1.1",
     "qs": "^6.5.2"
   }
