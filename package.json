@@ -1,7 +1,7 @@
 {
-  "name": "bankson-js",
+  "name": "bankson-js-mb",
   "version": "1.0.6",
-  "description": "Bankson.fi Node client",
+  "description": "Bankson.fi Node client, Mad Booster fork",
   "main": "src/index.js",
   "type": "module",
   "engines": {
@@ -10,11 +10,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src --out-dir lib",
-    "dev": "babel -w src --out-dir lib"
+    "dev": "babel -w src --out-dir lib",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/banksonfi/bankson-js.git"
+    "url": "git+https://github.com/MadBooster/bankson-js.git"
   },
   "keywords": [
     "bankson",
@@ -25,18 +26,21 @@
   "author": "Bankson authors",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/banksonfi/bankson-js/issues"
+    "url": "https://github.com/MadBooster/bankson-js/issues"
   },
-  "homepage": "https://github.com/banksonfi/bankson-js#readme",
+  "homepage": "https://github.com/MadBooster/bankson-js#readme",
   "devDependencies": {
-    "eslint": "^8.40.0",
-    "eslint-config-madbooster-node-app": "^9.0.0",
-    "eslint-plugin-simple-import-sort": "^12.1.0",
-    "eslint-plugin-unicorn": "^52.0.0"
+    "eslint": "^8.57.1",
+    "eslint-config-madbooster-node-app": "^11.0.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0"
   },
   "dependencies": {
-    "form-data": "^4.0.0",
+    "form-data": "^4.0.2",
     "node-rsa": "^1.1.1",
-    "qs": "^6.5.2"
+    "qs": "^6.14.0"
+  },
+  "overrides": {
+    "eslint-plugin-n": "^17.7.0",
+    "eslint-plugin-promise": "^7.1.0"
   }
 }
