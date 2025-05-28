@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "type": "module",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,9 +30,12 @@
   },
   "homepage": "https://github.com/MadBooster/bankson-js#readme",
   "devDependencies": {
-    "eslint": "^8.57.1",
-    "eslint-config-madbooster-node-app": "^11.0.0",
-    "eslint-plugin-simple-import-sort": "^12.1.0"
+    "@types/node": "^22.15.21",
+    "@types/node-rsa": "^1.1.4",
+    "eslint": "^9.27.0",
+    "eslint-config-madbooster-node-app": "^13.0.0",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "form-data": "^4.0.2",
