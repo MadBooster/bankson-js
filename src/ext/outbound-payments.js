@@ -1,10 +1,8 @@
 import Qs from 'qs'
 
-export default class Payments {
-  constructor(base) {
-    this.base = base
-  }
+import BaseSubClient from '../baseSubClient.js'
 
+export default class Payments extends BaseSubClient {
   fetch() {
     return this.base.get('/payments')
   }

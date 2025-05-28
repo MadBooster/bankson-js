@@ -1,8 +1,6 @@
-export default class Calls {
-  constructor(base) {
-    this.base = base
-  }
+import BaseSubClient from '../baseSubClient.js'
 
+export default class Calls extends BaseSubClient {
   fetch() {
     return this.base.get('/calls')
   }

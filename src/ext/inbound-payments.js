@@ -1,10 +1,8 @@
 import Qs from 'qs'
 
-export default class InboundPayments {
-  constructor(base) {
-    this.base = base
-  }
+import BaseSubClient from '../baseSubClient.js'
 
+export default class InboundPayments extends BaseSubClient {
   fetch(opts) {
     return this.base.get('/inboundpayments?' + Qs.stringify(opts))
   }
@@ -18,9 +16,9 @@ export default class InboundPayments {
     if(type !== 'json') {
       opts = {
         headers: {
-          Accept: type === 'xml' ? 'application/xml' : 'text/plain'
+          Accept: type === 'xml' ? 'application/xml' : 'text/plain',
         },
-        responseType: 'arraybuffer'
+        responseType: 'arraybuffer',
       }
     }
     return this.base.get(`/inboundpayments/batches/${batchId}`, opts)

@@ -1,8 +1,6 @@
-export default class BankAccountStatements {
-  constructor(base) {
-    this.base = base
-  }
+import BaseSubClient from '../baseSubClient.js'
 
+export default class BankAccountStatements extends BaseSubClient {
   fetch() {
     return this.base.get('/bankaccountstatements')
   }
@@ -10,33 +8,33 @@ export default class BankAccountStatements {
   statementHtml(id) {
     return this.base.get(`/bankaccountstatements/${id}`, {
       headers: {
-        Accept: 'text/html'
+        Accept: 'text/html',
       },
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
     })
   }
 
   statementXml(id) {
     return this.base.get(`/bankaccountstatements/${id}`, {
       headers: {
-        Accept: 'application/xml'
+        Accept: 'application/xml',
       },
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
     })
   }
 
   statementText(id) {
     return this.base.get(`/bankaccountstatements/${id}`, {
       headers: {
-        Accept: 'text/plain'
+        Accept: 'text/plain',
       },
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
     })
   }
 
   refresh(id) {
     return this.base.post('/bankaccountstatements', {
-      certificate_id: id
+      certificate_id: id,
     })
   }
 
@@ -47,27 +45,27 @@ export default class BankAccountStatements {
   statementHtmlV2(id) {
     return this.base.get(`/v2/bankaccountstatements/${id}`, {
       headers: {
-        Accept: 'text/html'
+        Accept: 'text/html',
       },
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
     })
   }
 
   statementXmlV2(id) {
     return this.base.get(`/v2/bankaccountstatements/${id}`, {
       headers: {
-        Accept: 'application/xml'
+        Accept: 'application/xml',
       },
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
     })
   }
 
   statementTextV2(id) {
     return this.base.get(`/v2/bankaccountstatements/${id}`, {
       headers: {
-        Accept: 'text/plain'
+        Accept: 'text/plain',
       },
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
     })
   }
 

@@ -1,10 +1,8 @@
 import FormData from 'form-data'
 
-export default class Certificates {
-  constructor(base) {
-    this.base = base
-  }
+import BaseSubClient from '../baseSubClient.js'
 
+export default class Certificates extends BaseSubClient {
   fetch() {
     return this.base.get('/certificates')
   }

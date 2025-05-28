@@ -1,8 +1,6 @@
-export default class ApiKeys {
-  constructor(base) {
-    this.base = base
-  }
+import BaseSubClient from '../baseSubClient.js'
 
+export default class ApiKeys extends BaseSubClient {
   fetch() {
     return this.base.get('/apikeys')
   }
