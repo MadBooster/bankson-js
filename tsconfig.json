@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,
+    //"noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "target": "es2022",
+    "declaration": true,
+    "outDir": "lib",
+    "allowJs": true
+  },
+  "include": ["src/**/*.ts"]
+}
