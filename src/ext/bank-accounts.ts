@@ -3,7 +3,7 @@ import Qs from 'qs'
 import BaseSubClient from '../baseSubClient.js'
 import type { BankAccountResponse, BaseResponse } from '../types.js'
 
-type BankAccountData = Omit<BankAccountResponse, 'id' | 'customer_information'> | {
+type BankAccountData = Omit<BankAccountResponse, 'id' | 'customer_information'> & {
   customer_information: Pick<NonNullable<BankAccountResponse['customer_information']>, 'name' | 'business_id'>
 }
 
@@ -22,6 +22,6 @@ export default class BankAccounts extends BaseSubClient {
   }
 
   updateV2(id: string, data: BankAccountData) {
-    return this.base.put<BankAccountData, BankAccountResponse>(`/v2/bank-accounts/${id}`, data)
+    return this.base.put<Pick<BankAccountData, 'contract_id' | 'customer_information'>, BankAccountResponse>(`/v2/bank-accounts/${id}`, data)
   }
 }
