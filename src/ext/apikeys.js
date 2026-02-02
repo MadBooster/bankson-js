@@ -1,18 +1,6 @@
 import BaseSubClient from '../baseSubClient.js'
 
 export default class ApiKeys extends BaseSubClient {
-  fetch() {
-    return this.base.get('/apikeys')
-  }
-
-  create(data) {
-    return this.base.post('/apikeys', data)
-  }
-
-  remove(id) {
-    return this.base.delete(`/apikeys/${id}`)
-  }
-
   fetchV2() {
     return this.base.get('/v2/apikeys')
   }

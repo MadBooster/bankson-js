@@ -62,10 +62,10 @@ export default class Client {
     this.outboundPayments = new Payments(this)
     this.apikeys = new ApiKeys(this)
     this.inboundPayments = new InboundPayments(this)
-    this.beforeRequest = opts.beforeRequest || (() => Promise.resolve({}))
+    this.beforeRequest = opts.beforeRequest ?? (() => Promise.resolve({}))
     this.bearerToken = opts.bearerToken || '-'
     this.baseUrl = opts.baseUrl || 'https://api.bankson.fi'
-    this.testMode = opts.test != null ? opts.test : false
+    this.testMode = opts.test ?? false
     if(opts.privateKey && opts.apiKey) {
       // ApiKey authentication
       this.bearerToken = false
@@ -97,9 +97,9 @@ export default class Client {
   }
 
   async headers(additionalHeaders: { Accept?: string } = {}) {
-    const result = await this.beforeRequest()
+    const result = await this.beforeRequest?.()
     const bearerToken = result?.bearerToken || this.bearerToken
-    const banksonTest = result?.test != null ? result.test : this.testMode
+    const banksonTest = result?.test ?? this.testMode
     const headers = new Headers()
     headers.append('Accept', additionalHeaders.Accept || 'application/json')
     headers.append('Authorization', this.authorizationHeader(bearerToken))
@@ -141,10 +141,10 @@ export default class Client {
       method: 'DELETE',
       headers,
     })
-    return this.handleResponse(resp)
+    return this.handleResponse<void>(resp)
   }
 
-  handleResponse<TResponse>(resp: Response, options: GetOptions = {}) {
+  handleResponse<TResponse>(resp: Response, options: GetOptions = {}): Promise<TResponse> {
     if(!resp.ok) {
       if(resp.status >= 500 || resp.status < 400) {
         const err = new InternalError(`Internal error (${resp.status}): ${resp.statusText}`)
@@ -161,10 +161,10 @@ export default class Client {
     }
     return getBody(resp)
 
-    async function getBody(resp: Response) {
-      if(!/application\/json/.test(resp.headers.get('Content-Type'))) {
-        if(options.responseType === 'arraybuffer') return resp.arrayBuffer()
-        return resp.text()
+    async function getBody(resp: Response): Promise<TResponse> {
+      if(!(resp.headers.get('Content-Type') ?? '').includes('application/json')) {
+        if(options.responseType === 'arraybuffer') return resp.arrayBuffer() as Promise<TResponse>
+        return resp.text() as Promise<TResponse>
       }
       return resp.json() as Promise<TResponse>
     }

@@ -1,25 +1,10 @@
 import Qs from 'qs'
 
 import BaseSubClient from '../baseSubClient.js'
-import { type BaseResponse } from '../types.js'
-
-interface BankAccountResponse {
-  id: string
-  bic: string
-  iban: string
-  contract_id: string
-  customer_information: {
-    name: string
-    business_id: string | null
-    contact_person: string | null
-    contact_person_ssn: string | null
-    contact_person_email: string | null
-    contact_person_phone: string | null
-  } | null | undefined
-}
+import type { BankAccountResponse, BaseResponse } from '../types.js'
 
 type BankAccountData = Omit<BankAccountResponse, 'id' | 'customer_information'> | {
-  customer_information: Pick<BankAccountResponse['customer_information'], 'name' | 'business_id'>
+  customer_information: Pick<NonNullable<BankAccountResponse['customer_information']>, 'name' | 'business_id'>
 }
 
 interface BankAccountFilters {
@@ -28,14 +13,6 @@ interface BankAccountFilters {
 }
 
 export default class BankAccounts extends BaseSubClient {
-  fetch() {
-    return this.base.get('/bankaccounts')
-  }
-
-  create(data) {
-    return this.base.post('/bankaccounts', data)
-  }
-
   fetchV2(opts: BankAccountFilters) {
     return this.base.get<BaseResponse<BankAccountResponse>>('/v2/bank-accounts?' + Qs.stringify(opts))
   }

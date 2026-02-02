@@ -1,14 +1,6 @@
 import BaseSubClient from '../baseSubClient.js'
 
 export default class Webhooks extends BaseSubClient {
-  fetch() {
-    return this.base.get('/webhooks')
-  }
-
-  create(data) {
-    return this.base.post('/webhooks', data)
-  }
-
   fetchV2() {
     return this.base.get('/v2/webhooks')
   }

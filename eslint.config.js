@@ -7,6 +7,6 @@ export default defineConfig([
   },
   {
     files: ['src/**/*.{ts,js}'],
-    extends: eslintConfigMadboosterNodeApp,
+    extends: eslintConfigMadboosterNodeApp(import.meta.dirname),
   },
 ])

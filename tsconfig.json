@@ -11,8 +11,10 @@
     "inlineSources": true,
     "target": "es2022",
     "declaration": true,
+    "declarationMap": true,
     "outDir": "lib",
-    "allowJs": true
+    "allowJs": true,
+    "strictNullChecks": true
   },
   "include": ["src/**/*.ts"]
 }
