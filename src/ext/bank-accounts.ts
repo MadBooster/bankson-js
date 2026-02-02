@@ -26,4 +26,8 @@ export default class BankAccounts extends BaseSubClient {
   updateV2(id: string, data: BankAccountUpdateData) {
     return this.base.put<BankAccountUpdateData, BankAccountResponse>(`/v2/bank-accounts/${id}`, data)
   }
+
+  updateBalanceV2(id: string) {
+    return this.base.post<Record<string, never>, BankAccountResponse>(`/v2/bank-accounts/${id}/balance`, {})
+  }
 }
