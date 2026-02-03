@@ -1,3 +1,8 @@
+export interface PaginationOptions {
+  offset?: number
+  limit?: number
+}
+
 export interface BaseResponse <T> {
   total_count: number
   items: T[]
@@ -113,4 +118,29 @@ export interface CallResponse {
   content: string
   response: string
   created_at: string
+}
+
+export type CertificateResponse = {
+  id: string
+  shared: boolean
+  bic: string
+} | {
+  id: string
+  not_after: string
+  not_before: string
+  subject: string
+  bank_customer_id: string | null
+  bank_target_id: string | null
+  bic: string | null
+  certificate_type: string | null
+  test: boolean
+}
+
+export interface ApiKeyResponse {
+  id: string
+  description: string
+  user_id: number
+  public_key: string
+  private_key: string
+  api_key: string
 }

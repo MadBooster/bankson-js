@@ -1,7 +1,7 @@
 import Qs from 'qs'
 
 import BaseSubClient from '../baseSubClient.js'
-import type { BankAccountResponse, BaseResponse } from '../types.js'
+import type { BankAccountResponse, BaseResponse, PaginationOptions } from '../types.js'
 
 export type BankAccountCreateData = Omit<BankAccountResponse, 'id' | 'customer_information'> & {
   customer_information: Pick<NonNullable<BankAccountResponse['customer_information']>, 'name' | 'business_id'>
@@ -9,10 +9,7 @@ export type BankAccountCreateData = Omit<BankAccountResponse, 'id' | 'customer_i
 
 export type BankAccountUpdateData = Pick<BankAccountCreateData, 'contract_id'> & { customer_information?: Partial<BankAccountCreateData['customer_information']> | null }
 
-interface BankAccountFilters {
-  offset?: number
-  limit?: number
-}
+type BankAccountFilters = PaginationOptions
 
 export default class BankAccounts extends BaseSubClient {
   fetchV2(opts: BankAccountFilters) {

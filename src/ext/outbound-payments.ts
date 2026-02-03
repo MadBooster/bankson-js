@@ -1,11 +1,9 @@
 import Qs from 'qs'
 
 import BaseSubClient from '../baseSubClient.js'
-import type { BaseResponse, OutboundPaymentResponse } from '../types.js'
+import type { BaseResponse, OutboundPaymentResponse, PaginationOptions } from '../types.js'
 
-interface OutboundPaymentFilters {
-  offset?: number
-  limit?: number
+interface OutboundPaymentFilters extends PaginationOptions {
   updated_after?: string | null
   bank_account?: string | null
   payment_date_min?: string | null

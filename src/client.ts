@@ -1,7 +1,6 @@
 import NodeRSA from 'node-rsa'
 
 import ApiKeys from './ext/apikeys.js'
-import Applications from './ext/applications.js'
 import BankAccountStatements from './ext/bank-account-statements.js'
 import BankAccounts from './ext/bank-accounts.js'
 import Certificates from './ext/bank-certificates.js'
@@ -42,7 +41,6 @@ export default class Client {
   private privateKey: NodeRSA
   private apiKey: string
 
-  public applications: Applications
   public webhooks: Webhooks
   public certificates: Certificates
   public calls: Calls
@@ -53,7 +51,6 @@ export default class Client {
   public inboundPayments: InboundPayments
 
   constructor(opts: Opts = {}) {
-    this.applications = new Applications(this)
     this.webhooks = new Webhooks(this)
     this.certificates = new Certificates(this)
     this.calls = new Calls(this)

@@ -1,11 +1,9 @@
 import Qs from 'qs'
 
 import BaseSubClient from '../baseSubClient.js'
-import type { BaseResponse, InboundPaymentResponse } from '../types.js'
+import type { BaseResponse, InboundPaymentResponse, PaginationOptions } from '../types.js'
 
-interface InboundPaymentFilters {
-  offset?: number
-  limit?: number
+interface InboundPaymentFilters extends PaginationOptions {
   updated_after?: string | null
   bank_account?: string | null
   payment_date_min?: string | null
@@ -17,11 +15,11 @@ export default class InboundPayments extends BaseSubClient {
     return this.base.get<BaseResponse<InboundPaymentResponse>>('/v2/inbound-payments?' + Qs.stringify(opts))
   }
 
-  refreshV2(certificateId) {
+  refreshV2(certificateId: string) {
     throw new Error('Not implemented')
   }
 
-  batchV2(batchId, type = 'json') {
+  batchV2(batchId: string, type = 'json') {
     throw new Error('Not implemented')
   }
 }
