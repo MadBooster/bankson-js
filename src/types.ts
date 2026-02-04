@@ -75,7 +75,7 @@ export interface OutboundPaymentResponse {
   recipient_name: string
   recipient_iban: string
   recipient_bic: string
-  amount: string
+  amount: number
   reference_number: string | null
   message: string | null
   payment_date: string
