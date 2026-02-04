@@ -17,8 +17,8 @@ export default class Payments extends BaseSubClient {
     return this.base.get<BaseResponse<OutboundPaymentResponse>>('/v2/outbound-payments?' + Qs.stringify(opts))
   }
 
-  addV2(data: OutboundPaymentData) {
-    return this.base.post<OutboundPaymentData, {
+  addV2(data: OutboundPaymentData[]) {
+    return this.base.post<OutboundPaymentData[], {
       failed: OutboundPaymentData[]
       succeeded: OutboundPaymentResponse[]
       failed_count: number
