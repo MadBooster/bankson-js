@@ -21,8 +21,8 @@ export interface BankAccountResponse {
     contact_person_email: string | null
     contact_person_phone: string | null
   } | null | undefined
-  balance?: number
-  balance_date?: string
+  balance?: number | null
+  balance_date?: string | null
 }
 
 export interface BankAccountStatementResponse {
