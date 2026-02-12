@@ -20,7 +20,7 @@ export default class Payments extends BaseSubClient {
   addV2(data: OutboundPaymentData[]) {
     return this.base.post<OutboundPaymentData[], {
       failed: OutboundPaymentData[]
-      succeeded: OutboundPaymentResponse[]
+      succeeded: Omit<OutboundPaymentResponse, 'bank_account'>[]
       failed_count: number
       succeeded_count: number
     }>('/v2/outbound-payments', data)
