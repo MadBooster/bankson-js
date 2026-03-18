@@ -81,6 +81,7 @@ export interface OutboundPaymentResponse {
   payment_date: string
   vendor_reference: string | null
   status: string | null
+  status_details: string | null
   created_at: string
   updated_at: string
   bank_account: BankAccountResponse
