@@ -10,7 +10,7 @@ interface OutboundPaymentFilters extends PaginationOptions {
   payment_date_max?: string | null
 }
 
-type OutboundPaymentData = Pick<OutboundPaymentResponse, 'source' | 'recipient_name' | 'recipient_iban' | 'recipient_bic' | 'amount' | 'reference_number' | 'message' | 'payment_date' | 'vendor_reference'>
+type OutboundPaymentData = Pick<OutboundPaymentResponse, 'source' | 'recipient_name' | 'recipient_iban' | 'recipient_bic' | 'amount' | 'reference_number' | 'message' | 'payment_date' | 'vendor_reference' | 'idempotency_key'>
 
 export default class Payments extends BaseSubClient {
   fetchV2(opts: OutboundPaymentFilters) {

@@ -80,6 +80,7 @@ export interface OutboundPaymentResponse {
   message: string | null
   payment_date: string
   vendor_reference: string | null
+  idempotency_key: string | null
   status: string | null
   status_details: string | null
   created_at: string
