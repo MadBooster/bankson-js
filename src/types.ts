@@ -71,6 +71,7 @@ export interface BankAccountStatementResponse {
 
 export interface OutboundPaymentResponse {
   id: string
+  source: string
   recipient_name: string
   recipient_iban: string
   recipient_bic: string
