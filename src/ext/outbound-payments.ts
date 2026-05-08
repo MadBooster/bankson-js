@@ -10,7 +10,7 @@ interface OutboundPaymentFilters extends PaginationOptions {
   payment_date_max?: string | null
 }
 
-type OutboundPaymentData = Pick<OutboundPaymentResponse, 'source' | 'recipient_name' | 'recipient_iban' | 'recipient_bic' | 'amount' | 'reference_number' | 'message' | 'payment_date' | 'vendor_reference' | 'idempotency_key'>
+type OutboundPaymentData = Pick<OutboundPaymentResponse, 'recipient_name' | 'recipient_iban' | 'recipient_bic' | 'amount' | 'reference_number' | 'message' | 'payment_date' | 'vendor_reference' | 'idempotency_key'>
 
 export default class Payments extends BaseSubClient {
   fetchV2(opts: OutboundPaymentFilters) {
@@ -19,7 +19,7 @@ export default class Payments extends BaseSubClient {
 
   addV2(data: OutboundPaymentData[]) {
     return this.base.post<OutboundPaymentData[], {
-      failed: OutboundPaymentData[]
+      failed: (OutboundPaymentData & { error: string })[]
       succeeded: Omit<OutboundPaymentResponse, 'bank_account'>[]
       failed_count: number
       succeeded_count: number
