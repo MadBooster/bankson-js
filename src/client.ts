@@ -82,7 +82,9 @@ export default class Client {
   }
 
   authorizationHeader(bearerToken: string | boolean) {
-    if(this.bearerToken) return 'Bearer ' + bearerToken
+    if(this.bearerToken) {
+      return 'Bearer ' + bearerToken
+    }
     const timestamp = Date.now()
     const str = this.apiKey + timestamp
     const signature = this.privateKey.sign(str, 'base64')
