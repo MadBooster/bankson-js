@@ -1,9 +1,9 @@
 {
   "name": "bankson-js-mb",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Bankson.fi Node client, Mad Booster fork",
   "main": "lib/index.js",
-  "types": "lib/types.d.ts",
+  "types": "lib/index.d.ts",
   "type": "module",
   "engines": {
     "node": ">=22.0.0"

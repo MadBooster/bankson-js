@@ -66,8 +66,11 @@ export interface BankAccountStatementResponse {
     debit_amount: number
   }
   bank_account: BankAccountResponse & {
-    deleted_at: string | null
-    restored_at: string | null
+    deleted_at?: string | null
+    restored_at?: string | null
+    created_at?: string | null
+    updated_at?: string | null
+    test: boolean
   }
 }
 
