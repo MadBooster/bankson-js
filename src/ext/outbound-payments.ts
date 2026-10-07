@@ -1,7 +1,7 @@
 import Qs from 'qs'
 
 import BaseSubClient from '../baseSubClient.js'
-import type { BaseResponse, OutboundPaymentResponse, PaginationOptions } from '../types.js'
+import type { OutboundPaymentListResponse, OutboundPaymentResponse, PaginationOptions } from '../types.js'
 
 interface OutboundPaymentFilters extends PaginationOptions {
   updated_after?: string | null
@@ -14,7 +14,7 @@ type OutboundPaymentData = Pick<OutboundPaymentResponse, 'recipient_name' | 'rec
 
 export default class Payments extends BaseSubClient {
   fetchV2(opts: OutboundPaymentFilters) {
-    return this.base.get<BaseResponse<OutboundPaymentResponse>>('/v2/outbound-payments?' + Qs.stringify(opts))
+    return this.base.get<OutboundPaymentListResponse>('/v2/outbound-payments?' + Qs.stringify(opts))
   }
 
   addV2(data: OutboundPaymentData[]) {

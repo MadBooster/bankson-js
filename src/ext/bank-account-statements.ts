@@ -1,7 +1,7 @@
 import Qs from 'qs'
 
 import BaseSubClient from '../baseSubClient.js'
-import type { BankAccountStatementResponse, BaseResponse, PaginationOptions } from '../types.js'
+import type { BankAccountStatementListResponse, BankAccountStatementResponse, PaginationOptions } from '../types.js'
 
 interface BankAccountStatementFilters extends PaginationOptions {
   updated_after?: string | null
@@ -10,7 +10,7 @@ interface BankAccountStatementFilters extends PaginationOptions {
 
 export default class BankAccountStatements extends BaseSubClient {
   fetchV2(opts: BankAccountStatementFilters) {
-    return this.base.get<BaseResponse<Omit<BankAccountStatementResponse, 'entries'>>>('/v2/bankaccountstatements?' + Qs.stringify(opts))
+    return this.base.get<BankAccountStatementListResponse>('/v2/bankaccountstatements?' + Qs.stringify(opts))
   }
 
   statementJsonV2(id: string) {

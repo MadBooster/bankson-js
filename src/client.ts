@@ -26,11 +26,21 @@ interface GetOptions {
 class InternalError extends Error {
   public status: number
   public statusText: string
+  constructor(message: string, status: number, statusText: string) {
+    super(message)
+    this.status = status
+    this.statusText = statusText
+  }
 }
 
 class ValidationError extends Error {
   public status: number
   public body: object
+  constructor(message: string, status: number, body: object) {
+    super(message)
+    this.status = status
+    this.body = body
+  }
 }
 
 export default class Client {
@@ -38,8 +48,8 @@ export default class Client {
   private bearerToken: string | boolean
   private baseUrl: string
   private testMode: boolean
-  private privateKey: NodeRSA
-  private apiKey: string
+  private privateKey?: NodeRSA
+  private apiKey?: string
 
   public webhooks: Webhooks
   public certificates: Certificates
@@ -63,6 +73,9 @@ export default class Client {
     this.bearerToken = opts.bearerToken || '-'
     this.baseUrl = opts.baseUrl || 'https://api.bankson.fi'
     this.testMode = opts.test ?? false
+    if(!opts.bearerToken && !opts.privateKey && !opts.apiKey) {
+      throw new Error('Either bearerToken or privateKey and apiKey must be provided')
+    }
     if(opts.privateKey && opts.apiKey) {
       // ApiKey authentication
       this.bearerToken = false
@@ -86,8 +99,8 @@ export default class Client {
       return 'Bearer ' + bearerToken
     }
     const timestamp = Date.now()
-    const str = this.apiKey + timestamp
-    const signature = this.privateKey.sign(str, 'base64')
+    const str = this.apiKey! + timestamp
+    const signature = this.privateKey!.sign(str, 'base64')
     return 'BanksonRSA ' + [
       'ApiKey=' + this.apiKey,
       'Timestamp=' + timestamp,
@@ -146,15 +159,11 @@ export default class Client {
   handleResponse<TResponse>(resp: Response, options: GetOptions = {}): Promise<TResponse> {
     if(!resp.ok) {
       if(resp.status >= 500 || resp.status < 400) {
-        const err = new InternalError(`Internal error (${resp.status}): ${resp.statusText}`)
-        err.status = resp.status
-        err.statusText = resp.statusText
+        const err = new InternalError(`Internal error (${resp.status}): ${resp.statusText}`, resp.status, resp.statusText)
         throw err
       }
       return getBody(resp).then(json => {
-        const err = new ValidationError('Request unsuccessfull')
-        err.status = resp.status
-        err.body = json as object
+        const err = new ValidationError('Request unsuccessfull', resp.status, json as object)
         throw err
       })
     }

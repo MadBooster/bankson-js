@@ -1,7 +1,7 @@
 import Qs from 'qs'
 
 import BaseSubClient from '../baseSubClient.js'
-import type { BaseResponse, PaginationOptions, WebhookResponse } from '../types.js'
+import type { PaginationOptions, WebhookListResponse, WebhookResponse } from '../types.js'
 
 type WebhookOptions = PaginationOptions
 
@@ -9,7 +9,7 @@ type WebhookData = Pick<WebhookResponse, 'description' | 'url' | 'test' | 'produ
 
 export default class Webhooks extends BaseSubClient {
   fetchV2(opts: WebhookOptions) {
-    return this.base.get<BaseResponse<WebhookResponse>>('/v2/webhooks?' + Qs.stringify(opts))
+    return this.base.get<WebhookListResponse>('/v2/webhooks?' + Qs.stringify(opts))
   }
 
   createV2(data: WebhookData) {

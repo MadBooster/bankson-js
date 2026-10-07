@@ -25,6 +25,8 @@ export interface BankAccountResponse {
   balance_date?: string | null
 }
 
+export type BankAccountListResponse = BaseResponse<BankAccountResponse>
+
 export interface BankAccountStatementResponse {
   id: string
   from: string
@@ -69,6 +71,8 @@ export interface BankAccountStatementResponse {
   }
 }
 
+export type BankAccountStatementListResponse = BaseResponse<Omit<BankAccountStatementResponse, 'entries'>>
+
 export interface OutboundPaymentResponse {
   id: string
   source: string
@@ -88,6 +92,8 @@ export interface OutboundPaymentResponse {
   bank_account: BankAccountResponse
 }
 
+export type OutboundPaymentListResponse = BaseResponse<OutboundPaymentResponse>
+
 export interface InboundPaymentResponse {
   id: string
   bank_account_id: string
@@ -103,6 +109,8 @@ export interface InboundPaymentResponse {
   bank_account: BankAccountResponse
 }
 
+export type InboundPaymentListResponse = BaseResponse<InboundPaymentResponse>
+
 export interface WebhookResponse {
   id: string
   description: string | null
@@ -113,6 +121,8 @@ export interface WebhookResponse {
   updated_at: string
 }
 
+export type WebhookListResponse = BaseResponse<WebhookResponse>
+
 export interface CallResponse {
   id: string
   certificate_id: string
@@ -121,6 +131,8 @@ export interface CallResponse {
   response: string
   created_at: string
 }
+
+export type CallListResponse = BaseResponse<CallResponse>
 
 export type CertificateResponse = {
   id: string
@@ -137,6 +149,8 @@ export type CertificateResponse = {
   certificate_type: string | null
   test: boolean
 }
+
+export type CertificateListResponse = BaseResponse<CertificateResponse>
 
 export interface ApiKeyResponse {
   id: string

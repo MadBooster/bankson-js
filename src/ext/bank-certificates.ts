@@ -1,5 +1,5 @@
 import BaseSubClient from '../baseSubClient.js'
-import type { BaseResponse, CertificateResponse } from '../types.js'
+import type { CertificateListResponse, CertificateResponse } from '../types.js'
 
 interface UploadParams {
   bank_customer_id: string
@@ -11,7 +11,7 @@ interface UploadParams {
 
 export default class Certificates extends BaseSubClient {
   fetchV2() {
-    return this.base.get<BaseResponse<CertificateResponse>>('/v2/bank-certificates')
+    return this.base.get<CertificateListResponse>('/v2/bank-certificates')
   }
 
   requestV2(data: UploadParams) {
