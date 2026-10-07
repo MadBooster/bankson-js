@@ -73,9 +73,6 @@ export default class Client {
     this.bearerToken = opts.bearerToken || '-'
     this.baseUrl = opts.baseUrl || 'https://api.bankson.fi'
     this.testMode = opts.test ?? false
-    if(!opts.bearerToken && !opts.privateKey && !opts.apiKey) {
-      throw new Error('Either bearerToken or privateKey and apiKey must be provided')
-    }
     if(opts.privateKey && opts.apiKey) {
       // ApiKey authentication
       this.bearerToken = false
